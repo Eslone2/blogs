@@ -95,7 +95,7 @@ a:hover {
    ========================================== */
 .hero-section {
     /* ここに画像をぶっこみます！ */
-    background-image: url("C:\\Users\\Yutaro Saka\\Downloads\\Gemini_Generated_Image_vu276qvu276qvu27_2(UpPhoto)(scale)(x2.000000).jpg"); /* 画像のファイルパス */
+    background-image: url("https://github.com/Eslone2/blogs/blob/main/HTML_IMAGE/index.png"); /* 画像のファイルパス */
     background-size: cover;        /* 画像をエリア全体に広げる */
     background-position: center;   /* 画像の中心を合わせる */
     background-repeat: no-repeat; /* 繰り返しを防ぐ */
