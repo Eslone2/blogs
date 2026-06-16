@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eslone's Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- あなたのローカルCSSパス（元の設定をキープ） -->
+    <link rel="stylesheet" href="./CSS/style_pages.css">
+</head>
+<body class="streetist-style">
+
+    <!-- 1. メインヘッダー -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="#" class="logo">Eslone's Blog</a>
+        </div>
+    </header>
+
+    <!-- 2. 大きなヒーローカバー画像エリア -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">えすろんのブログ</h1>
+            <p class="hero-subtitle">PC, スマホ, ガジェット, 金魚 etc...</p>
+        </div>
+    </section>
+
+    <!-- 3. STREETIST風：3連ピックアップ記事エリア -->
+    <section class="pickup-container">
+        <div class="pickup-inner">
+            <div class="pickup-card">
+                <a href="#" class="pickup-link">
+                    <div class="pickup-img-wrap">
+                        <img src="./HTML_IMAGE/20260616_0.png" alt="金魚">
+                    </div>
+                    <div class="pickup-info">
+                        <time class="pickup-date">2026.06.16</time>
+                        <h3 class="pickup-title">【アクアリウム】ピンポンパールと僕とAI</h3>
+                    </div>
+                </a>
+            </div>
+            <div class="pickup-card">
+                <a href="./20251127.html" class="pickup-link">
+                    <div class="pickup-img-wrap">
+                        <!-- ここにAQUOSレビュー用の画像など -->
+                        <img src="./HTML_IMAGE/20250429_0.png" alt="AQUOS review">
+                    </div>
+                    <div class="pickup-info">
+                        <time class="pickup-date">2025.11.27</time>
+                        <h3 class="pickup-title">【スマホ】AQUOS R9の簡易レビュー</h3>
+                    </div>
+                </a>
+            </div>
+            <div class="pickup-card">
+                <a href="#" class="pickup-link">
+                    <div class="pickup-img-wrap">
+                        <!-- ここにAQUOSレビュー用の画像など -->
+                        <img src="./HTML_IMAGE/20260617_0.png" alt="AQUOS review">
+                    </div>
+                    <div class="pickup-info">
+                        <time class="pickup-date">2026.06.17</time>
+                        <h3 class="pickup-title">【鉄道】青い森鉄道の快速、乗ってみた。</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. メインレイアウト（2カラム構造） -->
+    <div class="container main-layout">
+        
+        <main class="main-content">
+            <h2 class="section-title">Entries</h2>
+            
+            <div class="posts-grid-streetist">
+                <!-- 記事カード 1 -->
+                <article class="streetist-card">
+                    <a href="#">
+                        <div class="card-img-wrap">
+                            <span class="card-badge">アクアリウム</span>
+                            <img src="./HTML_IMAGE/20260616_0.png" alt="">
+                        </div>
+                        <div class="card-text-area">
+                            <time class="card-date">2026.06.16</time>
+                            <h3 class="card-title">ピンポンパールと僕とAI</h3>
+                            <p class="card-excerpt">まんまる可愛い金魚「ピンポンパール」の飼育記録。AIと一緒に試行錯誤しながら作った、我が家のアクアリウム環境を紹介。<br>（鋭意制作中）</p>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- 記事カード 2 -->
+                <article class="streetist-card">
+                    <a href="./20251127.html">
+                        <div class="card-img-wrap">
+                            <span class="card-badge">ガジェット</span>
+                            <img src="./HTML_IMAGE/20250429_0.png" alt="">
+                        </div>
+                        <div class="card-text-area">
+                            <time class="card-date">2025.11.27</time>
+                            <h3 class="card-title">AQUOS R9の簡易レビュー</h3>
+                            <p class="card-excerpt">Qualcomm Snapdragon 7+ Gen 3や240Hz駆動のIGZO Pro OLEDを搭載したAQUOS R9の使い心地を検証。</p>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- 記事カード 3 -->
+                <article class="streetist-card">
+                    <a href="#">
+                        <div class="card-img-wrap">
+                            <span class="card-badge">鉄道</span>
+                            <img src="./HTML_IMAGE/20260617_0.png" alt="青い森鉄道701-101">
+                        </div>
+                        <div class="card-text-area">
+                            <time class="card-date">2026.06.17</time>
+                            <h3 class="card-title">青い森鉄道の快速、乗ってみた。</h3>
+                            <p class="card-excerpt">青い森鉄道の快速に乗ってみた、感想と所感。<br>（鋭意制作中）</p>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- 記事カード 4 -->
+                <article class="streetist-card">
+                    <a href="#">
+                        <div class="card-img-wrap">
+                            <span class="card-badge">未分類</span>
+                            <div class="no-image-placeholder">No Image</div>
+                        </div>
+                        <div class="card-text-area">
+                            <time class="card-date">2026.06.14</time>
+                            <h3 class="card-title">Coming Soon...</h3>
+                            <p class="card-excerpt">次の新しい投稿を現在準備中です。今しばらくお待ちください。</p>
+                        </div>
+                    </a>
+                </article>
+            </div>
+        </main>
+
+        <!-- サイドバーエリア（STREETISTの見出しデザインに最適化） -->
+        <aside class="sidebar">
+            <!--<section class="widget">
+                <h2 class="widget-title"><span class="title-inner">SEARCH</span></h2>
+                <div class="search-form-wrap">
+                    <input type="text" placeholder="search word..." class="search-input">
+                    <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </section>-->
+
+            <section class="widget">
+                <h2 class="widget-title"><span class="title-inner">NEW ENTRIES</span></h2>
+                <ul class="widget-list">
+                    <!--<li><a href="./20260616.html">【アクアリウム】ピンポンパールと僕とAI</a></li>-->
+                    <li><a href="./20251127_2.html">【スマホ】AQUOS R9の簡易レビュー</a></li>
+                </ul>
+            </section>
+
+            <section class="widget">
+                <h2 class="widget-title"><span class="title-inner">PROFILE</span></h2>
+                <div class="profile-widget">
+                    <img src="./HTML_IMAGE/Logo.jpg" alt="管理人" class="profile-avatar">
+                    <p class="profile-name">えすろん</p>
+                    <p class="profile-text">大学でソフトウェアやネットワークを勉強中。金魚飼育やガジェットが大好きな趣味人ブログです。</p>
+                </div>
+            </section>
+        </aside>
+    </div>
+
+    <!-- ページトップへ戻るボタン -->
+    <button class="scroll-top-btn" aria-label="ページトップへ戻る" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p class="copyright">copyright &copy; 2026 Eslone's Blog. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

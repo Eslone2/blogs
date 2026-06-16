@@ -1,0 +1,888 @@
+@charset "UTF-8";
+
+/* ==========================================
+   1. 全般的なリセット & 基本設定
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1a1a1a; /* より引き締まった深みのあるダークグレー */
+    font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #e0e0e0;
+    line-height: 1.7;
+    
+    /* 画面最下部にフッターを固定するための設定 */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* 常にブラウザ画面いっぱいの高さを最低限確保 */
+}
+
+a {
+    color: #0088cc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #00b3ff;
+    text-decoration: underline;
+}
+
+/* 共通アイコン設定 */
+.icon-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: #0073aa;
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 14px;
+    margin-right: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.icon-circle-sm {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background-color: #0073aa;
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 11px;
+    margin-right: 10px;
+}
+
+/* ==========================================
+   2. ヘッダー (ナビゲーション)
+   ========================================== */
+.site-header {
+    background-color: #0c0c0c;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+/* ==========================================
+   3. ヒーローセクション (カバー画像エリア)
+   ========================================== */
+.hero-section {
+    /* ここに画像をぶっこみます！ */
+    background-image: url("C:\\Users\\Yutaro Saka\\Downloads\\Gemini_Generated_Image_vu276qvu276qvu27_2(UpPhoto)(scale)(x2.000000).jpg"); /* 画像のファイルパス */
+    background-size: cover;        /* 画像をエリア全体に広げる */
+    background-position: center;   /* 画像の中心を合わせる */
+    background-repeat: no-repeat; /* 繰り返しを防ぐ */
+    
+    /* テキストを中央に配置する */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* 適切な高さを設定 */
+    min-height: 400px; /* お好みの高さに */
+    
+    /* オプション：画像が明るい場合、テキストを見やすくするために半透明の黒を重ねる */
+    background-blend-mode: overlay;
+    background-color: rgba(0, 0, 0, 0.4);
+    
+    /* テキスト全体の色を白にする */
+    color: white;
+}
+
+.hero-content {
+    text-align: center; /* テキストを中央揃え */
+}
+
+.hero-title {
+    font-size: 3em; /* 大きなフォントサイズ */
+    font-weight: bold;
+    margin-bottom: 0.5em; /* 下にマージン */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* 影をつけて視認性アップ */
+}
+
+.hero-subtitle {
+    font-size: 1.2em; /* サブタイトル用の少し小さいサイズ */
+    font-weight: normal;
+}
+
+/* ==========================================
+   4. レイアウト構造
+   ========================================== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* PC等幅広サイズで2カラム、モバイルで1カラム */
+.main-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    flex-grow: 1; /* 余った縦方向のスペースをこのエリアが自動で引き伸ばす */
+    margin-bottom: 60px; /* ★追加：最下部の記事やサイドバーと、フッターの間に60pxの隙間を作ります */
+}
+
+@media (min-width: 992px) {
+    .main-layout {
+        grid-template-columns: 2.3fr 1.2fr;
+        align-items: start;
+    }
+}
+
+/* ==========================================
+   5. 投稿一覧エリア
+   ========================================== */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 30px; /* ヒーロー画像との間に隙間を確保 */
+}
+
+/* 「投稿一覧」タイトルタグ（文字だけに変更） */
+.section-title {
+    color: #bbbbbb;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+}
+
+/* 複数投稿を整理して見せるためのグリッド */
+.posts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+@media (min-width: 576px) {
+    .posts-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2列並びにして視認性を向上 */
+    }
+}
+
+/* 投稿カードのブラッシュアップ */
+.post-card {
+    background-color: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.post-card:hover {
+    transform: translateY(-8px); /* ホバー時の上品な浮き上がり */
+    box-shadow: 0 15px 30px rgba(0,115,170,0.25);
+}
+
+/* カード画像エリア */
+.card-image {
+    background: linear-gradient(135deg, #e0e0e0, #f5f5f5);
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #555555;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+/* ★ここを追加：カード内の画像が必ず綺麗に収まる設定 */
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;      /* 縦横比を維持したままエリアいっぱいに広げる */
+    object-position: center; /* 画像の中心を基準にする */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* 画像あり投稿用の背景画像 */
+.card-image.has-image {
+    background-size: cover;
+    background-position: center;
+}
+
+.no-image-text {
+    font-size: 28px;
+    font-weight: 700;
+    color: #666666;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+}
+
+.theme-text {
+    font-size: 13px;
+    color: #888888;
+}
+
+/* カードの文字エリア */
+.card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    background-color: #ffffff;
+}
+
+.post-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.post-title a {
+    color: #222222;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.post-title a:hover {
+    color: #0073aa;
+}
+
+/* 本文プレースホルダー */
+.post-excerpt {
+    color: #666666;
+    font-size: 14px;
+    margin-bottom: 15px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* タグ・日付情報 */
+.card-meta {
+    margin-top: auto; /* 下部に固定 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 12px;
+}
+
+.category {
+    background-color: #f0f4f8;
+    color: #0073aa;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.post-date {
+    color: #888888;
+}
+
+/* ==========================================
+   6. サイドバー
+   ========================================== */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    margin-top: 30px; /* 上部に隙間を確保 */
+}
+
+.widget {
+    background-color: #242424; /* ダークテーマに合わせた背景色 */
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    border: 1px solid #2d2d2d;
+}
+
+.widget-title-container,
+.widget-title {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+}
+
+.widget-label {
+    font-size: 15px;
+    color: #cccccc;
+}
+
+/* 検索フォーム */
+.search-form {
+    display: flex;
+    gap: 8px;
+}
+
+.search-input {
+    flex: 1;
+    background-color: #1a1a1a;
+    border: 1px solid #3d3d3d;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 15px;
+    color: #ffffff;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.search-input:focus {
+    border-color: #0073aa;
+}
+
+.search-submit {
+    background-color: #0073aa;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #ffffff;
+    transition: background-color 0.2s;
+}
+
+.search-submit:hover {
+    background-color: #0088cc;
+}
+
+/* ウィジェットリスト */
+.widget-list {
+    list-style: none;
+}
+
+.widget-list li {
+    font-size: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid #333333;
+}
+
+.widget-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.widget-list li a {
+    color: #0088cc;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.widget-list li a:hover {
+    color: #00b3ff;
+    text-decoration: underline;
+}
+
+/* 最近のコメント */
+.comments-list li {
+    color: #aaaaaa;
+    line-height: 1.6;
+}
+
+.comments-list .commenter {
+    color: #ffffff;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.comments-list .commenter:hover {
+    color: #00b3ff;
+    text-decoration: underline;
+}
+
+/* ==========================================
+   7. 補助ツール (スクロールトップ等)
+   ========================================== */
+.scroll-top-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 46px;
+    height: 46px;
+    background-color: #0073aa;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.scroll-top-btn:hover {
+    background-color: #0088cc;
+    transform: translateY(-3px);
+}
+
+/* ==========================================
+   8. フッター
+   ========================================== */
+.site-footer {
+    background-color: #0c0c0c; /* ヘッダーと同じ深い黒 */
+    padding: 30px 0;
+    margin-top: auto; /* コンテンツが少なくても強制的に最下部へ押し下げる */
+    border-top: 1px solid #222222;
+    text-align: center;
+    width: 100%;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.copyright {
+    color: #888888;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================
+   9. 記事詳細ページ用スタイル
+   ========================================== */
+
+/* 記事ページ用のヒーローセクション調整 */
+.post-hero {
+    min-height: 350px;
+    padding: 40px 20px;
+}
+
+.post-meta-top {
+    margin-bottom: 15px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    align-items: center;
+}
+
+.post-meta-top .category {
+    background-color: #0073aa;
+    color: #ffffff;
+}
+
+.post-main-title {
+    font-size: 2.4em;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+    .post-main-title {
+        font-size: 1.8em;
+    }
+}
+
+/* 記事本文の装飾 */
+.entry-article {
+    background-color: #242424; /* カードやサイドバーと同じトーンの背景 */
+    border-radius: 14px;
+    padding: 40px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    border: 1px solid #2d2d2d;
+}
+
+@media (max-width: 576px) {
+    .entry-article {
+        padding: 20px; /* スマホ時は余白を狭めて画面幅を広く使う */
+    }
+}
+
+.entry-content {
+    color: #e0e0e0;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* 本文内の段落間の余白 */
+.entry-content p {
+    margin-bottom: 24px;
+}
+
+/* 本文内の見出し (h2) */
+.entry-content h2 {
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 700;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #3d3d3d; /* 下線をつけて見出しを強調 */
+}
+
+/* 本us内の見出し (h3) */
+.entry-content h3 {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+/* リストのスタイル */
+.entry-content ul, 
+.entry-content ol {
+    margin-bottom: 24px;
+    padding-left: 20px;
+}
+
+.entry-content li {
+    margin-bottom: 8px;
+}
+
+/* コードブロック（ソースコードを表示する場合） */
+.entry-content pre {
+    background-color: #1a1a1a;
+    border: 1px solid #3d3d3d;
+    border-radius: 8px;
+    padding: 16px;
+    overflow-x: auto;
+    margin-bottom: 24px;
+}
+
+.entry-content pre code {
+    font-family: 'Consolas', 'Monaco', 'Courier New', Courier, monospace;
+    color: #00b3ff;
+    font-size: 14px;
+}
+
+/* 記事下のナビゲーション（一覧に戻るボタン） */
+.post-footer-nav {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #3d3d3d;
+}
+
+.back-to-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #aaaaaa;
+    font-size: 15px;
+    transition: color 0.2s;
+}
+
+.back-to-home:hover {
+    color: #00b3ff;
+    text-decoration: none;
+}
+
+/* ==========================================
+   STREETIST風 魔改造スタイル調整用（修正版）
+   ========================================== */
+
+/* ヘッダー周りのキャッチコピー文言 */
+.site-header .catchphrase {
+    font-size: 11px;
+    color: #888;
+    margin-top: 4px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+/* ヒーロータイトルのシャープな見栄え化 */
+.hero-title {
+    font-family: 'Comfortaa', sans-serif;
+    letter-spacing: 2px;
+}
+
+/* 3連ピックアップコンテナ */
+.pickup-container {
+    max-width: 1200px;
+    /* ★修正: -40px だったネガティブマージンを 40px に変更し、ヒーロー画像と被らないように下にずらします */
+    margin: 40px auto 40px; 
+    padding: 0 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.pickup-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+@media (min-width: 768px) {
+    .pickup-inner {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.pickup-card {
+    background: #242424;
+    /* ★修正: border-radius を 0px にして丸角を除去 */
+    border-radius: 0px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    transition: transform 0.3s;
+}
+
+.pickup-card:hover {
+    transform: translateY(-5px);
+}
+
+.pickup-link {
+    display: block;
+    text-decoration: none !important;
+}
+
+.pickup-img-wrap {
+    height: 150px;
+    position: relative;
+    background: #111;
+    overflow: hidden;
+}
+
+.pickup-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.no-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #666;
+    font-size: 14px;
+    background: #2c2c2c;
+    font-weight: bold;
+}
+
+.pickup-info {
+    padding: 15px;
+}
+
+.pickup-date {
+    font-size: 11px;
+    color: #0088cc;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.pickup-title {
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+/* メインコンテンツ側の記事構造 */
+.posts-grid-streetist {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+@media (min-width: 576px) {
+    .posts-grid-streetist {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.streetist-card {
+    background: #ffffff;
+    border-radius: 0px; /* ソリッドでエッジのある四角形 */
+    overflow: hidden;
+    box-shadow: 0 1px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s;
+}
+
+.streetist-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+.streetist-card a {
+    text-decoration: none !important;
+}
+
+.card-img-wrap {
+    height: 200px;
+    position: relative;
+    background: #111;
+    overflow: hidden;
+}
+
+.card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+}
+
+.streetist-card:hover .card-img-wrap img {
+    transform: scale(1.05); /* ホバー時にうっすらズーム */
+}
+
+/* 左上のカテゴリーバッジ */
+.card-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #b21818;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 3px 8px;
+    z-index: 5;
+    letter-spacing: 1px;
+}
+
+.card-text-area {
+    padding: 20px;
+    background: #ffffff;
+}
+
+.card-date {
+    font-size: 12px;
+    color: #666666;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.card-title {
+    font-size: 16px;
+    color: #111111 !important;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.streetist-card:hover .card-title {
+    color: #b21818 !important;
+}
+
+.card-excerpt {
+    font-size: 13px;
+    color: #555555 !important;
+    line-height: 1.6;
+}
+
+/* サイドバーの各ウィジェット設定 */
+.sidebar .widget {
+    /* ★修正: widget自体の丸角も除去し、四角形に統一します */
+    border-radius: 0px !important;
+}
+
+/* サイドバーの見出しのドット下線 */
+.sidebar .widget-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+    border-bottom: 2px solid #333333;
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.sidebar .widget-title::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background-color: #b21818;
+}
+
+/* サイドバー内検索フォーム */
+.search-form-wrap {
+    display: flex;
+    border: 1px solid #3d3d3d;
+    background: #1a1a1a;
+    padding: 2px;
+}
+
+.search-form-wrap .search-input {
+    border: none;
+    background: transparent;
+    padding: 10px;
+    color: #fff;
+    flex-grow: 1;
+    outline: none;
+    font-size: 14px;
+}
+
+.search-form-wrap .search-btn {
+    border: none;
+    background: #b21818;
+    color: #fff;
+    padding: 0 15px;
+    cursor: pointer;
+}
+
+/* プロフィールウィジェット */
+.profile-widget {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.profile-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%; /* プロフィール画像は元のデモ通り丸のままにしています */
+    margin-bottom: 12px;
+    border: 3px solid #333;
+}
+
+.profile-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.profile-text {
+    font-size: 13px;
+    color: #aaaaaa;
+    text-align: left;
+    line-height: 1.6;
+}
